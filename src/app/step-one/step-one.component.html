@@ -1,0 +1,28 @@
+<div class="row pl-5 pt-3 mt-5">
+  <div class="col-md-4 offset-md-4">
+    <form [formGroup]="firstStep" (ngSubmit)="submitFormOne()">
+  
+      <input type="text" placeholder="First Name" name="firstName" formControlName="firstName" class="form-control" [ngClass]="{'border-danger' : !firstStep.get('firstName').valid && firstStep.get('firstName').touched}">
+      <small style="color:red;"*ngIf="!firstStep.get('firstName').valid && firstStep.get('firstName').touched">First name is required!</small>
+      <br/>
+      <br/>
+      <input type="text" placeholder="Last Name" name="lastName" formControlName="lastName" class="form-control" [ngClass]="{'border-danger' : !firstStep.get('lastName').valid && firstStep.get('lastName').touched}">
+      <small style="color:red;"*ngIf="!firstStep.get('lastName').valid && firstStep.get('lastName').touched">Last name is required!</small>
+      <br/>
+      <br/>
+      <input type="text" placeholder="Zip code" name="zipCode" formControlName="zipCode" class="form-control mb-0" [ngClass]="{'border-danger' : !firstStep.get('zipCode').valid && firstStep.get('zipCode').touched}">
+      <small style="color:red;"*ngIf="!firstStep.get('zipCode').valid && firstStep.get('zipCode').touched">Invalid zip code!</small>
+      <small *ngIf="firstStep.get('zipCode').valid">{{ZipCodeMapper[firstStep.get('zipCode').value]}}</small>
+      <br/>
+      <br/>
+      <div class="row">
+        <div class="col-6">
+          <button type="button" class="btn btn-warning btn-block text-white" (click)="goBack()"><i class="fa fa-undo"></i> Go Back</button>
+        </div>
+        <div class="col-6">
+          <button type="submit" class="btn btn-success btn-block"[disabled]="!firstStep.valid"><i class="fa fa-arrow-right"></i> Next</button>
+        </div>
+    </div>
+    </form>
+</div>
+</div>

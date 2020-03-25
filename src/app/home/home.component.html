@@ -1,0 +1,41 @@
+<div class="container mt-3">
+    <div class="text-right mb-3">
+        <button class="btn btn-outline-primary mx-1" (click)="createUser()">
+            <i class="fa fa-plus"></i> Add new user
+        </button>
+    </div>
+    <table class="table">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col" class="text-center">Name</th>
+                <th scope="col" class="text-center">Last Name</th>
+                <th scope="col" class="text-center">Zip Code</th>
+                <th scope="col" class="text-center">Movies</th>
+                <th scope="col" class="text-center">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of users; let i=index;">
+                <td class="align-middle text-center">{{user.FirstName}}</td>
+                <td class="align-middle text-center">{{user.LastName}}</td>
+                <td class="align-middle text-center">{{user.ZipCode}}</td>
+                <td class="align-middle text-center">
+                    <span *ngFor="let movie of user.movies">
+                        {{movie.name}}
+                        <br>
+                    </span>
+                </td>
+                <td class="align-middle text-center">
+                <button class="btn btn-outline-primary mx-1" (click)="editUser(i)">
+                    <i class="fa fa-edit"></i> Edit
+                </button>
+                <button class="btn btn-outline-danger mx-1" (click)="deleteUser(i)">
+                    <i class="fa fa-trash"></i> Delete
+                </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    
+</div>
+    
