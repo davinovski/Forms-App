@@ -43,7 +43,9 @@ export class SaveDataService {
     else{
       var person=Users[index];
       this.person.movies.forEach(movie=>{
+        if(person.movies.findIndex(m=>m.name==movie.name && m.posterUrl==movie.posterUrl)==-1){
         person.movies.push(movie);
+        }
       })
     }
   }
