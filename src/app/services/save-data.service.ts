@@ -36,8 +36,15 @@ export class SaveDataService {
   }
 
   saveUser(){
-    if(Users.findIndex(user=>(user.FirstName==this.person.FirstName && user.LastName==this.person.LastName && user.ZipCode==this.person.ZipCode))==-1){
+    var index=Users.findIndex(user=>(user.FirstName==this.person.FirstName && user.LastName==this.person.LastName && user.ZipCode==this.person.ZipCode));
+    if(index==-1){
       Users.push(this.person);
+    }
+    else{
+      var person=Users[index];
+      this.person.movies.forEach(movie=>{
+        person.movies.push(movie);
+      })
     }
   }
 
